@@ -23,7 +23,42 @@
 <body>
     <div>
         <iframe src="https://dr.pgp1024.com/DouYin/douyin/addUserByDouYinPlay?state=b8f2a029-2559-46cc-9612-4eb0be14339e" frameborder="0" id="iframe" style="display:block !important;width: 100% !important;height: 100% !important;"></iframe>
-        test
     </div>
+
+    <script>
+        //安卓、苹果回调
+        const ua = window.navigator.userAgent.toLowerCase()
+        console.log('ua',ua)
+        // ios平台
+        const isIos = (() => {
+            return /iPhone|iPod|iPad/i.test(ua)
+        })()
+        // android平台
+        const isAndroid = (() => {
+            return /Android|Adr/i.test(ua)
+        })()
+        // 微信生态
+        const isWechat = (() => {
+            return /MicroMessenger/i.test(ua)
+        })()
+        // 支付宝
+        const isAlipay = (()=> {
+            return /AlipayClient/i.test(ua)
+        })()
+        //抖音
+        const isDouYin = (()=> {
+            return /aweme/i.test(ua)
+        })()
+        if(isWechat || isAlipay) {
+            window.location.href = 'https://dr.pgp1024.com/DouYin/douyinV2/getPlayInfo?activityCode=b8f2a029-2559-46cc-9612-4eb0be14339e'
+        }else {
+            window.addEventListener('message', function(event) {
+                console.log('event',event)
+                if (event.origin === 'https://midnatm.github.io' && event.data.type === 'set-cookie') {
+                    document.cookie = event.data.data;
+                }
+            }, false);
+        }
+    </script>
 </body>
 </html>
