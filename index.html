@@ -4,13 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirect</title>
+    <title>抖支付</title>
     <script>
         // window.location.href = "https://dy.pgp1024.com/DouYin/";
+        // window.location.href = "https://dr.pgp1024.com/DouYin/douyin/addUserByDouYinPlay?state=b8f2a029-2559-46cc-9612-4eb0be14339e";
     </script>
+    <style>
+        #iframe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
-    <!-- <iframe src="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx46b657ab6ff0a328&redirect_uri=https://dy.pgp1024.com/DouYin/douyinV2/wechatOpenId&response_type=code&scope=snsapi_base&state=b8f2a029-2559-46cc-9612-4eb0be14339e#wechat_redirect" frameborder="0" width="100%" height="100%"></iframe> -->
-    <iframe src="https://dy.pgp1024.com/DouYin/" frameborder="0" width="100%" height="100%"></iframe>
+    <!-- full screen iframe -->
+    <iframe src="https://dr.pgp1024.com/DouYin/douyin/addUserByDouYinPlay?state=b8f2a029-2559-46cc-9612-4eb0be14339e" frameborder="0" id="iframe"></iframe>
 </body>
 </html>
