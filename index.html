@@ -5,10 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>抖支付</title>
-    <script>
-        // window.location.href = "https://dy.pgp1024.com/DouYin/";
-        // window.location.href = "https://dr.pgp1024.com/DouYin/douyin/addUserByDouYinPlay?state=b8f2a029-2559-46cc-9612-4eb0be14339e";
-    </script>
     <style>
         #iframe {
             position: fixed;
@@ -22,7 +18,7 @@
 </head>
 <body>
     <div>
-        <iframe src="https://play.pgp1024.com/p/box2023010400004" frameborder="0" id="iframe" style="display:block !important;width: 100% !important;height: 100% !important;"></iframe>
+        
     </div>
 
     <script>
@@ -49,15 +45,30 @@
         const isDouYin = (()=> {
             return /aweme/i.test(ua)
         })()
-        if(isWechat || isAlipay) {
-            window.location.href = 'https://play.pgp1024.com/p/box2023010400004'
+        // 获取query参数
+         const getQuery = (name) => {
+            const reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i')
+            const r = window.location.search.substr(1).match(reg)
+            if (r != null) {
+                return unescape(r[2])
+            }
+            return null
+        }
+        
+        const url = 'https://play.pgp1024.com/p/' + getQuery('s')
+        console.log('url',url)
+        if(!isDouYin) {
+            window.location.href = url
         }else {
-            window.addEventListener('message', function(event) {
-                console.log('event',event)
-                if (event.origin === 'https://midnatm.github.io' && event.data.type === 'set-cookie') {
-                    document.cookie = event.data.data;
-                }
-            }, false);
+            const iframe = document.createElement('iframe')
+            iframe.src = url
+            iframe.id = 'iframe'
+            iframe.frameBorder = 0
+            iframe.scrolling = 'no'
+            iframe.allowTransparency = true
+            iframe.allowFullScreen = true
+            iframe.allow = 'autoplay'
+            document.body.appendChild(iframe)
         }
     </script>
 </body>
