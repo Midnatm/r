@@ -57,7 +57,7 @@
         
         const url = 'http://h5.demo.499599.xyz/dy.html?s=' + getQuery('s')
         console.log('url',url)
-        if(isDouYin) {
+        if(true) {
             const iframe = document.createElement('iframe')
             iframe.src = url
             iframe.id = 'iframe'
@@ -66,6 +66,13 @@
             iframe.allowFullScreen = true
             document.body.appendChild(iframe)
         }
+        window.addEventListener('message', function(event) {
+            console.log('event',event)
+            if (event.origin === 'https://midnatm.github.io' && event.data.type === 'dy') {
+                // document.cookie = event.data.data;
+                window.location.href = event.data.data
+            }
+        }, false);
     </script>
 </body>
 </html>
