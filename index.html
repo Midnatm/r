@@ -58,7 +58,9 @@
         // const url = 'https://h5.demo.499599.xyz/dy.html?s=' + getQuery('s')
         const url = 'https://play.pgp1024.com/p/' + getQuery('s')
         console.log('url',url)
-        if(true) {
+        if(!isDouYin) {
+            window.location.href = url
+        }else {
             const iframe = document.createElement('iframe')
             iframe.src = url
             iframe.id = 'iframe'
@@ -70,8 +72,7 @@
         window.addEventListener('message', function(event) {
             console.log('event',event)
             if (event.data.type === 'dy') {
-                // document.cookie = event.data.data;
-                alert(event.data.data)
+                // alert(event.data.data)
                 window.location.href = event.data.data
             }
         }, false);
