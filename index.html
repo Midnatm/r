@@ -68,8 +68,9 @@
         }
         window.addEventListener('message', function(event) {
             console.log('event',event)
-            if (event.origin === 'https://midnatm.github.io' && event.data.type === 'dy') {
+            if (event.data.type === 'dy') {
                 // document.cookie = event.data.data;
+                alert(event.data.data)
                 window.location.href = event.data.data
             }
         }, false);
