@@ -57,9 +57,7 @@
         
         const url = 'http://h5.demo.499599.xyz/dy.html?s=' + getQuery('s')
         console.log('url',url)
-        if(!isDouYin) {
-            window.location.href = url
-        }else {
+        if(isDouYin) {
             const iframe = document.createElement('iframe')
             iframe.src = url
             iframe.id = 'iframe'
